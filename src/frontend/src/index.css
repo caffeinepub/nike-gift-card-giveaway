@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+    /* Near-black background */
+    --background: 0.095 0.005 260;
+    --foreground: 0.98 0 0;
+    --card: 0.12 0.008 260;
+    --card-foreground: 0.98 0 0;
+    --popover: 0.12 0.008 260;
+    --popover-foreground: 0.98 0 0;
+    /* Vivid red primary */
+    --primary: 0.52 0.22 25;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.18 0.01 260;
+    --secondary-foreground: 0.98 0 0;
+    --muted: 0.2 0.01 260;
+    --muted-foreground: 0.65 0 0;
+    --accent: 0.52 0.22 25;
+    --accent-foreground: 0.98 0 0;
+    --destructive: 0.52 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.25 0.01 260;
+    --input: 0.25 0.01 260;
+    --ring: 0.52 0.22 25;
+    --chart-1: 0.52 0.22 25;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.095 0.005 260;
+    --sidebar-foreground: 0.98 0 0;
+    --sidebar-primary: 0.52 0.22 25;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.18 0.01 260;
+    --sidebar-accent-foreground: 0.98 0 0;
+    --sidebar-border: 0.25 0.01 260;
+    --sidebar-ring: 0.52 0.22 25;
+
+    /* Nike brand tokens */
+    --nike-red: oklch(0.52 0.22 25);
+    --nike-red-bright: oklch(0.58 0.24 25);
+    --nike-red-deep: oklch(0.38 0.2 25);
+    --nike-red-glow: oklch(0.58 0.24 25 / 0.4);
+    --hero-bg-start: #0b0b0d;
+    --hero-bg-end: #17181b;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "General Sans", "DM Sans", system-ui, sans-serif;
+  }
+}
+
+/* Custom font-faces */
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-weight: 200 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+/* Nike hero animations */
+@keyframes float-card {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes streak-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes streak-move {
+  0% {
+    transform: translateX(-5px) scaleX(0.95);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateX(5px) scaleX(1.05);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(-5px) scaleX(0.95);
+    opacity: 0.4;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 30px 8px oklch(0.58 0.24 25 / 0.35), 0 0 80px 20px
+      oklch(0.52 0.22 25 / 0.18), inset 0 0 20px oklch(0.58 0.24 25 / 0.08);
+  }
+  50% {
+    box-shadow: 0 0 50px 16px oklch(0.58 0.24 25 / 0.55), 0 0 120px 40px
+      oklch(0.52 0.22 25 / 0.28), inset 0 0 30px oklch(0.58 0.24 25 / 0.15);
+  }
+}
+
+@keyframes runner-slide {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes headline-reveal {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes cta-glow {
+  0%,
+  100% {
+    box-shadow: 0 4px 20px oklch(0.52 0.22 25 / 0.5);
+  }
+  50% {
+    box-shadow: 0 4px 40px oklch(0.58 0.24 25 / 0.8);
+  }
+}
+
+.animate-float-card {
+  animation: float-card 3s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+.animate-headline-reveal {
+  animation: headline-reveal 0.8s ease-out forwards;
+}
+
+.animate-runner-slide {
+  animation: runner-slide 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-cta-glow {
+  animation: cta-glow 2s ease-in-out infinite;
+}
+
+.hero-bg {
+  background: radial-gradient(
+      ellipse 80% 70% at 35% 60%,
+      oklch(0.38 0.2 25 / 0.55) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 50% 50% at 10% 80%,
+      oklch(0.28 0.18 25 / 0.4) 0%,
+      transparent 55%
+    ), linear-gradient(135deg, #0b0b0d 0%, #17181b 40%, #0f0f11 100%);
+}
+
+.motion-streaks {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.streak {
+  position: absolute;
+  height: 2px;
+  border-radius: 2px;
+  animation: streak-move 3s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(0.52 0.22 25 / 0.7),
+    oklch(0.58 0.24 25),
+    transparent
+  );
+}
+
+.diagonal-band {
+  clip-path: polygon(0 8%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.nav-blur {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
