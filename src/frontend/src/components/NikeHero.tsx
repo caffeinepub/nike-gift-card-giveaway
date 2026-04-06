@@ -248,10 +248,12 @@ export function NikeHero() {
           </div>
         </div>
 
-        {/* CTA Button */}
-        <button
-          type="button"
-          className={`animate-cta-glow font-anton text-base md:text-lg tracking-widest uppercase px-12 py-4 text-white transition-all duration-200 hover:scale-105 active:scale-100 ${
+        {/* CTA Button — linked */}
+        <a
+          href="https://singingfiles.com/show.php?l=0&u=2492414&id=74165&tracking_id="
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`animate-cta-glow font-anton text-base md:text-lg tracking-widest uppercase px-12 py-4 text-white transition-all duration-200 hover:scale-105 active:scale-100 inline-block ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{
@@ -260,19 +262,20 @@ export function NikeHero() {
               "0 4px 20px oklch(0.52 0.22 25 / 0.5), 0 2px 0 oklch(0.38 0.2 25)",
             borderRadius: "2px",
             transitionProperty: "transform, box-shadow, background",
+            textDecoration: "none",
           }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.background =
+            (e.currentTarget as HTMLAnchorElement).style.background =
               "oklch(0.58 0.24 25)";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.background =
+            (e.currentTarget as HTMLAnchorElement).style.background =
               "oklch(0.52 0.22 25)";
           }}
           data-ocid="hero.primary_button"
         >
           Claim Now
-        </button>
+        </a>
 
         {/* Entry count social proof */}
         <p className="mt-5 text-xs tracking-widest uppercase text-white/40 font-semibold">
